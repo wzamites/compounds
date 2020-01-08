@@ -1,50 +1,54 @@
-#Compounds
+# Compounds
+Application built with the MERN stack-- MongoDB, Express, React, and Node.js
 
-## Available Scripts
+Other noteworthy packages include react-vis from Uber, Mongoose, and Bootstrap
 
-In the project directory, you can run:
+## Database
 
-### `npm start`
+MongoDB is set to run locally on 3000 (and React on 8000)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Schema
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The following is the BSON schema written for Mongoose to understand
 
-### `npm test`
+```
+{
+  smiles : String,
+  identifier : String,
+  date : String,
+  assay_0 : mongoose.Schema.Types.Decimal128,
+  assay_1 : mongoose.Schema.Types.Decimal128,
+  assay_2 : mongoose.Schema.Types.Decimal128,
+  assay_3 : mongoose.Schema.Types.Decimal128,
+  assay_4 : mongoose.Schema.Types.Decimal128,
+  assay_5 : mongoose.Schema.Types.Decimal128,
+  assay_6 : mongoose.Schema.Types.Decimal128,
+  assay_7 : mongoose.Schema.Types.Decimal128,
+  assay_8 : mongoose.Schema.Types.Decimal128,
+  assay_9 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_0 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_1 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_2 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_3 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_4 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_5 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_6 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_7 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_8 : mongoose.Schema.Types.Decimal128,
+  model_for_assay_9 : mongoose.Schema.Types.Decimal128
+}
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The schema makes no use of the first row in the .csv. Maybe later.
 
-### `npm run build`
+### Data Loading
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The UI can't write to the database (yet). Given a .csv it will have to be uploaded via mongoimport in the terminal (not the Mongo shell).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+In my case `<databaseName>` was compoundsDB and I used one `<collectionName>` called compounds.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`$ mongoimport -d <databaseName> -c <collectionName> --type csv --file <filename>.csv --headerline`
 
-### `npm run eject`
+## UI
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![](docs/img/scbig.png)
