@@ -49,3 +49,6 @@ In my case `<databaseName>` was compoundsDB and I used one `<collectionName>` ca
 
 `$ mongoimport -d <databaseName> -c <collectionName> --type csv --file <filename>.csv --headerline`
 
+## UI
+
+![](docs/img/scbig.png)
