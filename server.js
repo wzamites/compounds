@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const app = express()
 const apiPort = process.env.PORT || 3000
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user:user123@ds261567.mlab.com:61567/heroku_n7stzfqz",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/compoundsDB",
 {useNewUrlParser: true, useUnifiedTopology: true})
 
 const compoundSchema = new mongoose.Schema ({
@@ -41,6 +41,10 @@ app.get("/api", function(req, res) {
   })
 })
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static("client/build"))
 }
@@ -49,4 +53,5 @@ app.listen(apiPort, function() {
   console.log("it's running");
 })
 
-//"mongodb://localhost:27017/compoundsDB"
+//mongodb://localhost:27017/compoundsDB
+//mongodb://user:user123@ds261567.mlab.com:61567/heroku_n7stzfqz
