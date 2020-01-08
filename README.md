@@ -39,10 +39,13 @@ The following is the BSON schema written for Mongoose to understand
 }
 ```
 
-### `npm start`
+The schema makes no use of the first row in the .csv. Maybe later.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Data Loading
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The UI can't write to the database (yet). Given a .csv it will have to be uploaded via mongoimport in the terminal (not the Mongo shell).
+
+In my case `<databaseName>` was compoundsDB and I used one `<collectionName>` called compounds.
+
+`$ mongoimport -d <databaseName> -c <collectionName> --type csv --file reverie_challenge_data.csv --headerline`
+
