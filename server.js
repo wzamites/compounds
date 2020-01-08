@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const app = express()
 const apiPort = process.env.PORT || 3000
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user:user123@ds261567.mlab.com:61567/heroku_n7stzfqz",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/compoundsDB",
 {useNewUrlParser: true, useUnifiedTopology: true})
 
 const compoundSchema = new mongoose.Schema ({
