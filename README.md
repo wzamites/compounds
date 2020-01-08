@@ -47,5 +47,5 @@ The UI can't write to the database (yet). Given a .csv it will have to be upload
 
 In my case `<databaseName>` was compoundsDB and I used one `<collectionName>` called compounds.
 
-`$ mongoimport -d <databaseName> -c <collectionName> --type csv --file reverie_challenge_data.csv --headerline`
+`$ mongoimport -d <databaseName> -c <collectionName> --type csv --file <filename>.csv --headerline`
 
