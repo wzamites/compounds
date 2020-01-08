@@ -5,7 +5,7 @@ Other noteworthy packages include react-vis from Uber, Mongoose, and Bootstrap
 
 ## Database
 
-MongoDB is set to run locally on 3000 (and React on 8000)
+MongoDB is set to run locally on 3000 (and React on 8000). It serves up an API that returns JSON on localhost:3000/api.json
 
 ### Schema
 
@@ -39,6 +39,8 @@ The following is the BSON schema written for Mongoose to understand
 }
 ```
 
+This BSON object is the MongoDB equivilent of a sql row.
+
 The schema makes no use of the first row in the .csv. Maybe later.
 
 ### Data Loading
@@ -49,6 +51,49 @@ In my case `<databaseName>` was compoundsDB and I used one `<collectionName>` ca
 
 `$ mongoimport -d <databaseName> -c <collectionName> --type csv --file <filename>.csv --headerline`
 
+## Run Locally
+
+### Installation
+
+You'll need to install the node packages for both the server and the client
+
+```
+npm install
+cd client
+npm install
+```
+
+Similarly you'll have to start both the server and the client
+
+```
+npm start
+cd client
+npm start
+```
+
+Locally the client will run on 8000 and the server will run on 3000
+
+### Database Connection
+
+In server.js, this line points to the database.
+
+```
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/compoundsDB",
+{useNewUrlParser: true, useUnifiedTopology: true})
+```
+
+mongodb://localhost:27017/compoundsDB is the location of my local database. This will change in production or if you named your database something else. 
+
 ## UI
 
+Select the assay at the top, then select a zoom level.
+
+The top graph shows the progress of an assay over time. The x-axis is time and the y-axis is measured values.
+
+The bottom graph shows predicted vs actual results for a given assay. Reality is in red, and the prediction is in blue.
+
+### Small
+![](docs/img/scsmall.png)
+
+### Big
 ![](docs/img/scbig.png)
