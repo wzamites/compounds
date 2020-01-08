@@ -5,7 +5,7 @@ Other noteworthy packages include react-vis from Uber, Mongoose, and Bootstrap
 
 ## Database
 
-Server is set to run locally on 3000 (and React on 8000). It serves up an API that returns JSON on localhost:3000/api.json
+Server is set to run locally on 3000 (and React on 8000). It serves up an API that returns JSON on localhost:3000/api
 
 ### Schema
 
